@@ -18,11 +18,6 @@ public class GetFitAvance {
             {7, 7, 6, 5}
     };
 
-    public static void main(String [] args) {
-        int opcion = elegirOpcion();
-        mostrarMenu(opcion);
-    }
-
     public static void imprimirMenu() {
         System.out.println("""
                 Por favor elija una opción.
