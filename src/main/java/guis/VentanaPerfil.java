@@ -1,6 +1,7 @@
 package guis;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +11,9 @@ public class VentanaPerfil extends Ventana implements ActionListener {
     JLabel nombre;
     JLabel edad;
     JLabel maxFlexiones;
-    JLabel maxDominadas;
+    /*protected*/ JLabel maxDominadas;
+    protected final String fuente = "Sabon Next LT";
+    protected final int tamañoFuente = 15;
 
     public VentanaPerfil() {
         regresar = this.generarBoton("<--", 20, 15, 50, 30);
@@ -20,13 +23,13 @@ public class VentanaPerfil extends Ventana implements ActionListener {
         cerrarSesion.addActionListener(this);
 
         nombre = this.generarEtiqueta("Nombre: ", 20, 300, 70, 20,
-                "Sabon Next LT", 15);
+                this.fuente, this.tamañoFuente);
         edad = this.generarEtiqueta("Edad: ", 20, 340, 100, 20,
-                "Sabon Next LT", 15);
+                this.fuente, this.tamañoFuente);
         maxFlexiones = this.generarEtiqueta("Máx. flexiones: ", 20, 380, 150, 20,
-                "Sabon Next LT", 15);
+                this.fuente, this.tamañoFuente);
         maxDominadas = this.generarEtiqueta("Máx. dominadas: ", 20, 420, 150, 20,
-                "Sabon Next LT", 15);
+                this.fuente, this.tamañoFuente);
     }
 
     @Override

@@ -12,7 +12,6 @@ public class VentanaFlexiones extends Ventana implements ItemListener, ActionLis
     JButton regresar;
 
     public VentanaFlexiones () {
-        super();
         numeroDeFlexiones = this.generarComboBox(4, 30, 125, 220, 150, 30);
         numeroDeFlexiones.addItemListener(this);
 

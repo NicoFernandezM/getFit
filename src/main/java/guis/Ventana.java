@@ -3,7 +3,7 @@ package guis;
 import javax.swing.*;
 import java.awt.*;
 
-public class Ventana extends JFrame {
+public abstract class Ventana extends JFrame {
 
     public Ventana() {
         this.setLayout(null);
@@ -23,6 +23,14 @@ public class Ventana extends JFrame {
 
     protected JButton generarBoton(String texto, int x, int y, int ancho, int largo) {
         JButton boton = new JButton(texto);
+        boton.setBounds(x, y, ancho, largo);
+        this.add(boton);
+
+        return boton;
+    }
+
+    protected JButton generarBoton(int x, int y, int ancho, int largo) {
+        JButton boton = new JButton();
         boton.setBounds(x, y, ancho, largo);
         this.add(boton);
 
