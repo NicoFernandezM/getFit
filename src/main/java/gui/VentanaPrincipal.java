@@ -1,5 +1,6 @@
-package guis;
+package gui;
 
+import controlador.ArchivoDeTextoControlador;
 import utils.Imagenes;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class VentanaPrincipal extends Ventana implements ActionListener {
         videos = this.generarBoton("Videos",125, 400, 150, 80);
         perfil = this.generarBoton(25, 25, 50, 50);
 
-        perfil.setIcon(Imagenes.getImagenPerfil());
+        //perfil.setIcon(Imagenes.getImagenPerfil());
 
         flexiones.addActionListener(this);
         dominadas.addActionListener(this);

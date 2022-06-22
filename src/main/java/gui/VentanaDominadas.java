@@ -1,4 +1,4 @@
-package guis;
+package gui;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,6 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
     JButton regresar;
 
     public VentanaDominadas () {
-        super();
         numeroDeDominadas = this.generarComboBox(4, 30, 125, 220, 150, 30);
         numeroDeDominadas.addItemListener(this);
 
