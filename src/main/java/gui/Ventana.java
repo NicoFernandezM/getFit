@@ -6,13 +6,13 @@ import java.awt.*;
 public abstract class Ventana extends JFrame {
 
     public Ventana() {
-        super();
-        super.setLayout(null);
-        super.setSize(400,600);
-        super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        super.setVisible(true);
-        super.setLocationRelativeTo(null);
-        super.setResizable(false);
+        this.setLayout(null);
+        this.setSize(400,600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setTitle("GetFit");
     }
 
     protected JTextField generarCampoDeTexto(int x, int y, int ancho, int largo) {
