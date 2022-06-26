@@ -36,7 +36,7 @@ public class VentanaFlexiones extends Ventana implements ItemListener, ActionLis
             //Guardar datos y mostrar ventana de tabla.
         } else {
             this.dispose();
-            VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+            new VentanaPrincipal();
         }
     }
 }

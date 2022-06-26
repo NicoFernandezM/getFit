@@ -1,10 +1,9 @@
 package main;
 
-import gui.RegistroUsuario;
+import gui.VentanaLogin;
 
 public class Launcher {
     public static void main(String [] args) {
-        //VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-        RegistroUsuario registroUsuario = new RegistroUsuario();
+        VentanaLogin ventanaLogin = new VentanaLogin();
     }
 }

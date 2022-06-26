@@ -14,6 +14,7 @@ public class VentanaPrincipal extends Ventana implements ActionListener {
     private JButton videos;
 
     public VentanaPrincipal () {
+        this.setTitle("GetFit");
         flexiones = this.generarBoton("Flexiones", 125, 200, 150, 80);
         dominadas = this.generarBoton("Dominadas",125, 300, 150, 80);
         videos = this.generarBoton("Videos",125, 400, 150, 80);
@@ -33,15 +34,15 @@ public class VentanaPrincipal extends Ventana implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == flexiones) {
-            VentanaFlexiones ventanaFlexiones = new VentanaFlexiones();
+            new VentanaFlexiones();
             this.dispose();
         } else if(e.getSource() == dominadas) {
-            VentanaDominadas ventanaFlexiones = new VentanaDominadas();
+            new VentanaDominadas();
             this.dispose();
         } else if(e.getSource() == videos) {
             this.dispose();
         } else {
-            VentanaPerfil ventanaPerfil = new VentanaPerfil();
+            new VentanaPerfil();
             this.dispose();
         }
     }

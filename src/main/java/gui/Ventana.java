@@ -22,6 +22,13 @@ public abstract class Ventana extends JFrame {
         this.add(campoDeTexto);
         return campoDeTexto;
     }
+    protected JPasswordField generarCampoDeTextoContraseña(int x, int y, int ancho, int largo) {
+        JPasswordField campoDeTexto = new JPasswordField();
+        campoDeTexto.setBounds(x, y, ancho, largo);
+        campoDeTexto.setVisible(true);
+        this.add(campoDeTexto);
+        return campoDeTexto;
+    }
 
     protected JButton generarBoton(String texto, int x, int y, int ancho, int largo) {
         JButton boton = new JButton(texto);

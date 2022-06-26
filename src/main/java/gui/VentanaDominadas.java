@@ -1,5 +1,7 @@
 package gui;
 
+import controlador.ArchivoDeTextoControlador;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +29,7 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
 
     @Override
     public void itemStateChanged(ItemEvent e) {
-
+        ArchivoDeTextoControlador.getInstancia().editarUsuario(20, 10);
     }
 
     @Override
@@ -36,7 +38,7 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
             //Mostrar ventana de tabla de dominadas.
         } else {
             this.dispose();
-            VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+            new VentanaPrincipal();
         }
     }
 
