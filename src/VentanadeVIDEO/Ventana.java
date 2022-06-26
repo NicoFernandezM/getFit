@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class Ventana {
     private String Imagen1 = "https://i.pinimg.com/originals/05/b2/74/05b274ce4e818ddbee34dee6ac785b5f.gif";
-    private String Imagen2 = "https://raw.githubusercontent.com/NandoProjectoFinal/Practicas/main/coollogo_com-8400384.png?token=GHSAT0AAAAAABV72KZI5HQCAMN5THMTEZEUYVXREDA";
+    private String Imagen2 = "https://drive.google.com/file/d/1iLwKzmPnlosukGUZM0IA01a2ceyzwuH9/view?usp=sharing";
 
 
     public Ventana() throws IOException {
@@ -107,7 +107,7 @@ public class Ventana {
 
 
     public static void main(String[] args) throws IOException {
-        // Ventana a = new Ventana();
+        Ventana a = new Ventana();
 
 
     }
