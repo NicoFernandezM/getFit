@@ -2,7 +2,14 @@ package Modelo;
 
 public class Arreglo {
     public static void main(String[] args) {
-
+        for (int i = 0; i < 10; i++) {
+            double[] a= numeroDominadas(i);
+            System.out.println("["+i+"]");
+            for (int j = 0; j < a.length; j++) {
+                System.out.print("["+Math.round(a[j])+"]");
+            }
+            System.out.println("");
+        }
     }
 
     public static double[] numeroDominadas(int numMax) {
