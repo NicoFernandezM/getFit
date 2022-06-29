@@ -9,9 +9,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 public class VentanaDominadas extends Ventana implements ItemListener, ActionListener {
-    JComboBox numeroDeDominadas;
-    JButton aceptar;
-    JButton regresar;
+    private JComboBox numeroDeDominadas;
+    private JButton aceptar;
+    private JButton regresar;
 
     public VentanaDominadas () {
         numeroDeDominadas = this.generarComboBox(4, 30, 125, 220, 150, 30);

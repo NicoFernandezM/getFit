@@ -7,9 +7,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 public class VentanaFlexiones extends Ventana implements ItemListener, ActionListener {
-    JComboBox numeroDeFlexiones;
-    JButton aceptar;
-    JButton regresar;
+    private JComboBox numeroDeFlexiones;
+    private JButton aceptar;
+    private JButton regresar;
 
     public VentanaFlexiones () {
         numeroDeFlexiones = this.generarComboBox(4, 30, 125, 220, 150, 30);

@@ -5,7 +5,7 @@ import controlador.ArchivoDeTextoControlador;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.util.Arrays;
 
 public class VentanaInicioSesion extends Ventana implements ActionListener {
     private JButton iniciarSesionBtn;
@@ -14,8 +14,8 @@ public class VentanaInicioSesion extends Ventana implements ActionListener {
     protected final String fuente = "Sabon Next LT";
     protected final int tamañoFuente = 10;
 
-    JTextField usuario;
-    JPasswordField contraseña;
+    private JTextField usuario;
+    private JPasswordField contraseña;
 
     public VentanaInicioSesion() {
         this.generarEtiqueta("Inicio de sesión", 90, 100, 300,80,
@@ -36,8 +36,23 @@ public class VentanaInicioSesion extends Ventana implements ActionListener {
         this.contraseña = this.generarCampoDeTextoContraseña(100, 300, 200, 20);
     }
 
+    public boolean entradasVacias() {
+        return (this.usuario.getText().isEmpty() && obtenerContraseña().isEmpty());
+    }
+
+    public String obtenerContraseña() {
+        String contraseña = Arrays.toString(this.contraseña.getPassword());
+
+        return String.join(",", contraseña).
+                replaceAll("\\p{Punct}", "").replaceAll(" ", "");
+    }
+
+    public boolean usuarioValido() {
+        return ArchivoDeTextoControlador.getInstancia().validarUsuario(this.usuario.getText(), obtenerContraseña());
+    }
+
     public void iniciarSesion() {
-        if(ArchivoDeTextoControlador.getInstancia().validarUsuario(this.usuario.getText(), this.contraseña.getText())) {
+        if(usuarioValido() && !entradasVacias()) {
             new VentanaPrincipal();
             this.dispose();
         } else {

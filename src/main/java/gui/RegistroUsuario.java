@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class RegistroUsuario extends Ventana implements ActionListener {
     private JButton registrarBtn;
@@ -14,11 +15,11 @@ public class RegistroUsuario extends Ventana implements ActionListener {
     protected final String fuente = "Sabon Next LT";
     protected final int tamañoFuente = 10;
 
-    JTextField nombre;
-    JTextField apellido;
-    JTextField usuario;
-    JPasswordField contraseña;
-    JTextField edad;
+    private JTextField nombre;
+    private JTextField apellido;
+    private JTextField usuario;
+    private JPasswordField contraseña;
+    private JTextField edad;
 
     public RegistroUsuario() {
         this.generarEtiqueta("Registrar", 130, 50, 150,80, "Forte", 35);
@@ -49,8 +50,46 @@ public class RegistroUsuario extends Ventana implements ActionListener {
         this.usuario = this.generarCampoDeTexto(100, 250, 200, 20);
         this.contraseña = this.generarCampoDeTextoContraseña(100, 300, 200, 20);
         this.edad = this.generarCampoDeTexto(100, 350, 200, 20);
+    }
 
+    public boolean entradasValidas() {
+        return (nombreValido() && !entradasVacias() && edadValida());
+    }
 
+    public boolean nombreValido() {
+        String nombre = unirNombreYApellido().replaceAll(" ","");
+        return (nombre.matches("[a-zA-Z]+"));
+    }
+
+    public String unirNombreYApellido() {
+        return this.nombre.getText().replaceAll(" ","") + " " +
+                this.apellido.getText().replaceAll(" ","");
+    }
+
+    public boolean entradasVacias() {
+        return (this.nombre.getText().isEmpty() && this.apellido.getText().isEmpty() &&
+                this.usuario.getText().isEmpty() && obtenerContraseña().isEmpty() &&
+                this.edad.getText().isEmpty());
+    }
+
+    public String obtenerUsuario() {
+        return this.usuario.getText().replaceAll(" ","");
+    }
+
+    public String obtenerContraseña() {
+        String contraseña = Arrays.toString(this.contraseña.getPassword());
+
+        return String.join(",", contraseña).
+                replaceAll("\\p{Punct}", "").replaceAll(" ", "");
+    }
+
+    public boolean edadValida() {
+        try {
+            int edad = Integer.parseInt(this.edad.getText());
+            return edad < 120 && edad > 0;
+        }catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     public void limpiarTextField() {
@@ -61,18 +100,23 @@ public class RegistroUsuario extends Ventana implements ActionListener {
         edad.setText("");
     }
 
+    public boolean usuarioExiste() {
+        ArchivoDeTextoControlador c = ArchivoDeTextoControlador.getInstancia();
+        return c.usuarioExiste(this.usuario.getText()) != null;
+    }
+
     public void registrarUsuario() {
         ArchivoDeTextoControlador controlador = ArchivoDeTextoControlador.getInstancia();
 
         try {
-            if(controlador.usuarioExiste(this.usuario.getText()) == null) {
-                controlador.registrarUsuario(this.usuario.getText(), this.contraseña.getText(),
-                        this.nombre.getText(), Integer.parseInt(this.edad.getText()));
+            if(!usuarioExiste() && entradasValidas()) {
+                controlador.registrarUsuario(obtenerUsuario(), obtenerContraseña(),
+                        unirNombreYApellido(), Integer.parseInt(this.edad.getText()));
 
-                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+                new VentanaPrincipal();
                 this.dispose();
             } else{
-                JOptionPane.showMessageDialog(this, "Nombre de usuario ya existe",
+                JOptionPane.showMessageDialog(this, "Entradas inválidas",
                         "Ingreso inválido", JOptionPane.WARNING_MESSAGE);
                 limpiarTextField();
             }
