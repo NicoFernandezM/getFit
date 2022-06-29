@@ -10,6 +10,10 @@ public class VentanaLogin extends Ventana implements ActionListener {
 
     public VentanaLogin() {
         this.generarEtiqueta("GetFit", 155, 100, 150,80, "Forte", 30);
+        generarBotones();
+    }
+
+    private void generarBotones() {
         iniciarSesionBtn = this.generarBoton("Iniciar sesión", 100, 200, 200, 80);
         registrarseBtn = this.generarBoton("Registrarse", 100, 300, 200, 80);
 

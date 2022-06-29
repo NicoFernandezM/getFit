@@ -22,13 +22,33 @@ public class RegistroUsuario extends Ventana implements ActionListener {
     private JTextField edad;
 
     public RegistroUsuario() {
-        this.generarEtiqueta("Registrar", 130, 50, 150,80, "Forte", 35);
+        inicializarComponentes();
+    }
 
+    private void inicializarComponentes() {
+        generarBotones();
+        generarEtiquetas();
+        generarCamposDeTexto();
+    }
+
+    private void generarBotones() {
         regresarBtn = this.generarBoton("<--", 20, 15, 50, 30);
         regresarBtn.addActionListener(this);
 
         registrarBtn = this.generarBoton("Registrar", 150, 400, 100, 50);
         registrarBtn.addActionListener(this);
+    }
+
+    private void generarCamposDeTexto() {
+        this.nombre = this.generarCampoDeTexto(100, 150, 200, 20);
+        this.apellido = this.generarCampoDeTexto(100, 200, 200, 20);
+        this.usuario = this.generarCampoDeTexto(100, 250, 200, 20);
+        this.contraseña = this.generarCampoDeTextoContraseña(100, 300, 200, 20);
+        this.edad = this.generarCampoDeTexto(100, 350, 200, 20);
+    }
+
+    private void generarEtiquetas() {
+        this.generarEtiqueta("Registrar", 130, 50, 150,80, "Forte", 35);
 
         this.generarEtiqueta("Nombre: ", 20, 150, 70, 20,
                 this.fuente, this.tamañoFuente);
@@ -44,55 +64,49 @@ public class RegistroUsuario extends Ventana implements ActionListener {
 
         this.generarEtiqueta("Edad: ", 20, 350, 70, 20,
                 this.fuente, this.tamañoFuente);
-
-        this.nombre = this.generarCampoDeTexto(100, 150, 200, 20);
-        this.apellido = this.generarCampoDeTexto(100, 200, 200, 20);
-        this.usuario = this.generarCampoDeTexto(100, 250, 200, 20);
-        this.contraseña = this.generarCampoDeTextoContraseña(100, 300, 200, 20);
-        this.edad = this.generarCampoDeTexto(100, 350, 200, 20);
     }
 
-    public boolean entradasValidas() {
+    private boolean entradasValidas() {
         return (nombreValido() && !entradasVacias() && edadValida());
     }
 
-    public boolean nombreValido() {
+    private boolean nombreValido() {
         String nombre = unirNombreYApellido().replaceAll(" ","");
         return (nombre.matches("[a-zA-Z]+"));
     }
 
-    public String unirNombreYApellido() {
+    private String unirNombreYApellido() {
         return this.nombre.getText().replaceAll(" ","") + " " +
                 this.apellido.getText().replaceAll(" ","");
     }
 
-    public boolean entradasVacias() {
+    private boolean entradasVacias() {
         return (this.nombre.getText().isEmpty() && this.apellido.getText().isEmpty() &&
                 this.usuario.getText().isEmpty() && obtenerContraseña().isEmpty() &&
                 this.edad.getText().isEmpty());
     }
 
-    public String obtenerUsuario() {
+    private String obtenerUsuario() {
         return this.usuario.getText().replaceAll(" ","");
     }
 
-    public String obtenerContraseña() {
+    private String obtenerContraseña() {
         String contraseña = Arrays.toString(this.contraseña.getPassword());
 
         return String.join(",", contraseña).
                 replaceAll("\\p{Punct}", "").replaceAll(" ", "");
     }
 
-    public boolean edadValida() {
+    private boolean edadValida() {
         try {
             int edad = Integer.parseInt(this.edad.getText());
-            return edad < 120 && edad > 0;
+            return edad < 100 && edad > 5;
         }catch (NumberFormatException e) {
             return false;
         }
     }
 
-    public void limpiarTextField() {
+    private void limpiarTextField() {
         nombre.setText("");
         apellido.setText("");
         usuario.setText("");
@@ -100,12 +114,12 @@ public class RegistroUsuario extends Ventana implements ActionListener {
         edad.setText("");
     }
 
-    public boolean usuarioExiste() {
+    private boolean usuarioExiste() {
         ArchivoDeTextoControlador c = ArchivoDeTextoControlador.getInstancia();
         return c.usuarioExiste(this.usuario.getText()) != null;
     }
 
-    public void registrarUsuario() {
+    private void registrarUsuario() {
         ArchivoDeTextoControlador controlador = ArchivoDeTextoControlador.getInstancia();
 
         try {
@@ -132,7 +146,7 @@ public class RegistroUsuario extends Ventana implements ActionListener {
 
         } else if (e.getSource() == regresarBtn) {
             this.dispose();
-            VentanaLogin ventanaLogin = new VentanaLogin();
+            new VentanaLogin();
         }
     }
 }

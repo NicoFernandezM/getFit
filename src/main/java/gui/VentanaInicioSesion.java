@@ -18,40 +18,55 @@ public class VentanaInicioSesion extends Ventana implements ActionListener {
     private JPasswordField contraseña;
 
     public VentanaInicioSesion() {
-        this.generarEtiqueta("Inicio de sesión", 90, 100, 300,80,
-                "Forte", 30);
+        inicializarComponentes();
+    }
 
+    private void inicializarComponentes() {
+        generarBotones();
+        generarEtiquetas();
+        generarCamposDeTexto();
+    }
+
+    private void generarBotones() {
         regresarBtn = this.generarBoton("<--", 20, 15, 50, 30);
         regresarBtn.addActionListener(this);
 
         iniciarSesionBtn = this.generarBoton("Iniciar sesión", 140, 400, 120, 50);
         iniciarSesionBtn.addActionListener(this);
+    }
 
-        this.generarEtiqueta("Usuario: ", 20, 250, 70, 20,
-                this.fuente, this.tamañoFuente);
-        this.generarEtiqueta("Contraseña: ", 20, 300, 70, 20,
-                this.fuente, this.tamañoFuente);
-
+    private void generarCamposDeTexto() {
         this.usuario = this.generarCampoDeTexto(100, 250, 200, 20);
         this.contraseña = this.generarCampoDeTextoContraseña(100, 300, 200, 20);
     }
 
-    public boolean entradasVacias() {
+    private void generarEtiquetas() {
+        this.generarEtiqueta("Inicio de sesión", 90, 100, 300,80,
+                "Forte", 30);
+
+        this.generarEtiqueta("Usuario: ", 20, 250, 70, 20,
+                this.fuente, this.tamañoFuente);
+
+        this.generarEtiqueta("Contraseña: ", 20, 300, 70, 20,
+                this.fuente, this.tamañoFuente);
+    }
+
+    private boolean entradasVacias() {
         return (this.usuario.getText().isEmpty() && obtenerContraseña().isEmpty());
     }
 
-    public String obtenerContraseña() {
+    private String obtenerContraseña() {
         String contraseña = Arrays.toString(this.contraseña.getPassword());
 
         return String.join(",", contraseña).
                 replaceAll("\\p{Punct}", "").replaceAll(" ", "");
     }
 
-    public boolean usuarioValido() {
+    private boolean usuarioValido() {
         return ArchivoDeTextoControlador.getInstancia().validarUsuario(this.usuario.getText(), obtenerContraseña());
     }
 
-    public void iniciarSesion() {
+    private void iniciarSesion() {
         if(usuarioValido() && !entradasVacias()) {
             new VentanaPrincipal();
             this.dispose();

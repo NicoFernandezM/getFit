@@ -14,17 +14,27 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
     private JButton regresar;
 
     public VentanaDominadas () {
-        numeroDeDominadas = this.generarComboBox(4, 30, 125, 220, 150, 30);
-        numeroDeDominadas.addItemListener(this);
+        this.generarEtiqueta("Ingrese su máximo de repeticiones.",
+                35, 100, 430,80, "Impact", 20);
+        inicializarComponentes();
+    }
 
+    private void inicializarComponentes() {
+        generarBotones();
+        generarComboBox();
+    }
+
+    private void generarBotones() {
         aceptar = this.generarBoton("Aceptar", 125, 300, 150, 80);
         aceptar.addActionListener(this);
 
         regresar = this.generarBoton("<--", 20, 15, 50, 30);
         regresar.addActionListener(this);
+    }
 
-        this.generarEtiqueta("Ingrese su máximo de repeticiones.",
-                35, 100, 430,80, "Impact", 20);
+    private void generarComboBox() {
+        numeroDeDominadas = this.generarComboBox(4, 30, 125, 220, 150, 30);
+        numeroDeDominadas.addItemListener(this);
     }
 
     @Override

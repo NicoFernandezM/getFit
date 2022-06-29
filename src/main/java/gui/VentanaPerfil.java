@@ -16,16 +16,27 @@ public class VentanaPerfil extends Ventana implements ActionListener {
     private JLabel maxDominadas;
     protected final String fuente = "Sabon Next LT";
     protected final int tamañoFuente = 15;
+    //Está bien esto definido como atributo?
+    private Usuario usuarioEnSesion = ArchivoDeTextoControlador.getInstancia().getUsuarioEnSesion();
 
     public VentanaPerfil() {
-        Usuario usuarioEnSesion = ArchivoDeTextoControlador.getInstancia().getUsuarioEnSesion();
+        inicializarComponentes();
+    }
 
+    private void inicializarComponentes() {
+        generarBotones();
+        generarEtiquetas();
+    }
+
+    private void generarBotones() {
         regresar = this.generarBoton("<--", 20, 15, 50, 30);
         regresar.addActionListener(this);
 
         cerrarSesion = this.generarBoton("Cerrar sesión", 20, 500, 150, 30);
         cerrarSesion.addActionListener(this);
+    }
 
+    private void generarEtiquetas() {
         nombre = this.generarEtiqueta("Nombre: " + usuarioEnSesion.getNombre(), 20, 300, 380, 20,
                 this.fuente, this.tamañoFuente);
         edad = this.generarEtiqueta("Edad: " + usuarioEnSesion.getEdad(), 20, 340, 380, 20,
