@@ -17,16 +17,16 @@ public abstract class Ventana extends JFrame {
 
     protected JTextField generarCampoDeTexto(int x, int y, int ancho, int largo) {
         JTextField campoDeTexto = new JTextField();
+        this.add(campoDeTexto);
         campoDeTexto.setBounds(x, y, ancho, largo);
         campoDeTexto.setVisible(true);
-        this.add(campoDeTexto);
         return campoDeTexto;
     }
     protected JPasswordField generarCampoDeTextoContraseña(int x, int y, int ancho, int largo) {
         JPasswordField campoDeTexto = new JPasswordField();
+        this.add(campoDeTexto);
         campoDeTexto.setBounds(x, y, ancho, largo);
         campoDeTexto.setVisible(true);
-        this.add(campoDeTexto);
         return campoDeTexto;
     }
 

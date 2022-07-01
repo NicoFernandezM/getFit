@@ -10,13 +10,15 @@ import java.awt.event.ItemListener;
 
 public class VentanaDominadas extends Ventana implements ItemListener, ActionListener {
     private JComboBox numeroDeDominadas;
-    private JButton aceptar;
-    private JButton regresar;
+
+    private JButton mostrarVideoBtn;
+    private JButton aceptarBtn;
+    private JButton regresarBtn;
 
     public VentanaDominadas () {
+        inicializarComponentes();
         this.generarEtiqueta("Ingrese su máximo de repeticiones.",
                 35, 100, 430,80, "Impact", 20);
-        inicializarComponentes();
     }
 
     private void inicializarComponentes() {
@@ -25,11 +27,14 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
     }
 
     private void generarBotones() {
-        aceptar = this.generarBoton("Aceptar", 125, 300, 150, 80);
-        aceptar.addActionListener(this);
+        mostrarVideoBtn = this.generarBoton("Ver video explicativo.", 100, 15, 270, 30);
+        mostrarVideoBtn.addActionListener(this);
 
-        regresar = this.generarBoton("<--", 20, 15, 50, 30);
-        regresar.addActionListener(this);
+        aceptarBtn = this.generarBoton("Aceptar", 125, 300, 150, 80);
+        aceptarBtn.addActionListener(this);
+
+        regresarBtn = this.generarBoton("<--", 20, 15, 50, 30);
+        regresarBtn.addActionListener(this);
     }
 
     private void generarComboBox() {
@@ -44,11 +49,13 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == aceptar) {
-            //Mostrar ventana de tabla de dominadas.
-        } else {
+        if(e.getSource() == aceptarBtn) {
+            //Mostrar tabla gonzalo
+        } else if(e.getSource() == regresarBtn) {
             this.dispose();
             new VentanaPrincipal();
+        } else if(e.getSource() == mostrarVideoBtn) {
+            //Mostrar videos Juan
         }
     }
 

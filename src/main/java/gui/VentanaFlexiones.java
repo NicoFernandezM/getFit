@@ -8,8 +8,10 @@ import java.awt.event.ItemListener;
 
 public class VentanaFlexiones extends Ventana implements ItemListener, ActionListener {
     private JComboBox numeroDeFlexiones;
-    private JButton aceptar;
-    private JButton regresar;
+
+    private JButton mostrarVideoBtn;
+    private JButton aceptarBtn;
+    private JButton regresarBtn;
 
     public VentanaFlexiones () {
         inicializarComponentes();
@@ -23,11 +25,14 @@ public class VentanaFlexiones extends Ventana implements ItemListener, ActionLis
     }
 
     private void generarBotones() {
-        aceptar = this.generarBoton("Aceptar", 125, 300, 150, 80);
-        aceptar.addActionListener(this);
+        mostrarVideoBtn = this.generarBoton("Ver video explicativo.", 100, 15, 270, 30);
+        mostrarVideoBtn.addActionListener(this);
 
-        regresar = this.generarBoton("<--", 20, 15, 50, 30);
-        regresar.addActionListener(this);
+        aceptarBtn = this.generarBoton("Aceptar", 125, 300, 150, 80);
+        aceptarBtn.addActionListener(this);
+
+        regresarBtn = this.generarBoton("<--", 20, 15, 50, 30);
+        regresarBtn.addActionListener(this);
     }
 
     private void generarComboBox() {
@@ -42,11 +47,13 @@ public class VentanaFlexiones extends Ventana implements ItemListener, ActionLis
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == aceptar) {
+        if(e.getSource() == aceptarBtn) {
             //Guardar datos y mostrar ventana de tabla.
-        } else {
+        } else if(e.getSource() == regresarBtn) {
             this.dispose();
             new VentanaPrincipal();
+        } else if(e.getSource() == mostrarVideoBtn) {
+
         }
     }
 }
