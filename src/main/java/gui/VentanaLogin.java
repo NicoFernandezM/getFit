@@ -27,7 +27,7 @@ public class VentanaLogin extends Ventana implements ActionListener {
             new VentanaInicioSesion();
             this.dispose();
         } else if(e.getSource() == registrarseBtn) {
-            new RegistroUsuario();
+            new VentanaRegistroUsuario();
             this.dispose();
         }
     }

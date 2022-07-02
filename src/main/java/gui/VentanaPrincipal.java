@@ -10,7 +10,6 @@ public class VentanaPrincipal extends Ventana implements ActionListener {
     private JButton perfil;
 
     public VentanaPrincipal () {
-        this.setTitle("GetFit");
         this.generarEtiqueta("GetFit", 155, 100, 150,80, "Forte", 30);
         inicializarComponentes();
         //perfil.setIcon(Imagenes.getImagenPerfil());

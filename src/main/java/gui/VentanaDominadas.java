@@ -44,6 +44,7 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
 
     @Override
     public void itemStateChanged(ItemEvent e) {
+        //int maxDominadas = ArchivoDeTextoControlador.getInstancia().getUsuarioEnSesion().getMaxRepsDominadas();
         ArchivoDeTextoControlador.getInstancia().editarUsuario(20, 10);
     }
 
@@ -55,7 +56,8 @@ public class VentanaDominadas extends Ventana implements ItemListener, ActionLis
             this.dispose();
             new VentanaPrincipal();
         } else if(e.getSource() == mostrarVideoBtn) {
-            //Mostrar videos Juan
+            this.dispose();
+            //new VentanaVideosDominadas();
         }
     }
 

@@ -74,6 +74,7 @@ public class ArchivoDeTextoControlador {
                     .filter(i -> content.get(i).contains(this.usuarioEnSesion.getNombreUsuario()))
                     .findFirst()
                     .orElse(-1);
+
             content.set(indice, lineaUsuario);
 
             Files.write(Paths.get(DATOS_USUARIOS), content , StandardOpenOption.WRITE);

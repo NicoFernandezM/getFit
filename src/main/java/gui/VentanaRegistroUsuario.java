@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class RegistroUsuario extends Ventana implements ActionListener {
+public class VentanaRegistroUsuario extends Ventana implements ActionListener {
     private JButton registrarBtn;
     private JButton regresarBtn;
 
@@ -21,7 +21,7 @@ public class RegistroUsuario extends Ventana implements ActionListener {
     private JPasswordField contraseña;
     private JTextField edad;
 
-    public RegistroUsuario() {
+    public VentanaRegistroUsuario() {
         inicializarComponentes();
     }
 

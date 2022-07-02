@@ -53,7 +53,8 @@ public class VentanaFlexiones extends Ventana implements ItemListener, ActionLis
             this.dispose();
             new VentanaPrincipal();
         } else if(e.getSource() == mostrarVideoBtn) {
-
+            this.dispose();
+            //new VentanaVideosFlexiones();
         }
     }
 }
