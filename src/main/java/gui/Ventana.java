@@ -3,28 +3,31 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class Ventana extends JFrame {
-    public Ventana(){
+public abstract class Ventana extends JFrame {
+
+    public Ventana() {
         this.setLayout(null);
         this.setSize(400,600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setTitle("GetFit");
     }
 
-    protected JTextField generarCampoDeTexto(int x, int y,int ancho,int largo){
+    protected JTextField generarCampoDeTexto(int x, int y, int ancho, int largo) {
         JTextField campoDeTexto = new JTextField();
-        campoDeTexto.setBounds(x, y, ancho, largo);
         this.add(campoDeTexto);
+        campoDeTexto.setBounds(x, y, ancho, largo);
+        campoDeTexto.setVisible(true);
         return campoDeTexto;
     }
-
-    protected JPasswordField generarCampoDeTexto2(int x, int y,int ancho,int largo){
-        JPasswordField campoDeTexto2 = new JPasswordField();
-        campoDeTexto2.setBounds(x, y, ancho, largo);
-        this.add(campoDeTexto2);
-        return campoDeTexto2;
+    protected JPasswordField generarCampoDeTextoContraseña(int x, int y, int ancho, int largo) {
+        JPasswordField campoDeTexto = new JPasswordField();
+        this.add(campoDeTexto);
+        campoDeTexto.setBounds(x, y, ancho, largo);
+        campoDeTexto.setVisible(true);
+        return campoDeTexto;
     }
 
     protected JButton generarBoton(String texto, int x, int y, int ancho, int largo) {
@@ -42,6 +45,7 @@ public class Ventana extends JFrame {
 
         return boton;
     }
+
     protected JLabel generarEtiqueta (String texto, int x, int y, int ancho, int largo, String fuente, int tamaño) {
         JLabel etiqueta = new JLabel(texto);
         etiqueta.setBounds(x, y, ancho, largo);
@@ -51,6 +55,18 @@ public class Ventana extends JFrame {
         return etiqueta;
     }
 
+    protected  JTextArea generarArea(String texto, int x,int y,int ancho,int largo, String fuente,int tamaño){
+        JTextArea area = new JTextArea(texto);
+        this.add(area);
+        area.setBounds(x,y,ancho,largo);
+        Font myFont2 = new Font(fuente, Font.BOLD, tamaño);
+        area.setFont(myFont2);
+        area.setEditable(false);
+        return area;
+
+    }
+
+
     protected JLabel generarEtiqueta (String texto, int x, int y, int ancho, int largo) {
         JLabel etiqueta = new JLabel(texto);
         etiqueta.setBounds(x, y, ancho, largo);
@@ -58,6 +74,19 @@ public class Ventana extends JFrame {
         return etiqueta;
     }
 
+    protected JComboBox generarComboBox(int minReps, int maxReps, int x, int y, int ancho, int largo) {
+        JComboBox <String> comboBox = new JComboBox<String>();
+        comboBox.setBounds(x,y,ancho,largo);
+        int numeroDeReps = maxReps - minReps + 1;
+        String[] numeros = new String[numeroDeReps];
 
+        for (int i = minReps; i <= maxReps; i++) {
+            numeros[i - minReps] = String.valueOf(i);
+            comboBox.addItem(numeros[i - minReps]);
+        }
+
+        this.add(comboBox);
+
+        return comboBox;
+    }
 }
-
